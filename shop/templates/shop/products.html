@@ -1,0 +1,67 @@
+{% extends 'shop/basic.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %} ProductPage {% endblock %}
+{% block extra_in_head %}
+<link rel="stylesheet" href="{% static '/shop/prodview.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="prodview_first_section">
+    <div class="container prodview_container">
+        <div class="row pt-sm-2 pt-md-4 prodivew_main_row">
+            <div class="col-12 col-sm-4 col-md-3 prodview_left_column">
+                <div class="row mx-0 p-0 prodview_img_container">
+                    <img src="/media/{{product.image}}" class="card-img-top prodview_img" alt="...">
+                </div>
+                <div id="product_button_container" class="row prodview_button_container">
+                    <div class="col px-0 prodview_buttons prodview_checkout_button">
+                        <a href="/checkout" id="prodview_checkout_button_{{product.id}}"
+                            class="btn btn-primary checkout_button">Checkout</a>
+                    </div>
+                    <div id="add_cart_button_span_{{product.id}}"
+                        class="col-12 px-0 prodview_buttons prodview_cart_button">
+                        <button type="button" id="procuct_cart_button_{{product.id}}"
+                            class="btn btn-primary add_to_card_link add_to_cart_button">Add
+                            to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm prodview_right_column">
+                <div class="row prodview_head_row">
+                    <h2 id="product_heading_{{product.id}}" class="prodview_product_heading">{{product.prodcut_name}}
+                    </h2>
+                </div>
+                <div class="row mb-2 prodview_desc_row">
+                    <h6 class="prodview_product_desc">{{product.product_desc}}</h6>
+                </div>
+                <div class="row prodview_category_row">
+                    <h4 class="prodview_product_category">
+                        <span class="category_heading">Category:</span>
+                        <span class="category_cont">{{product.category}}</span>
+                    </h4>
+                </div>
+                <div class="row mb-2 prodview_sub-category_row">
+                    <h5 class="prodview_product_sub_category">
+                        <span class="sub_category_heading">Sub Category:</span>
+                        <span class="sub_category_cont">{{product.sub_category}}</span>
+                    </h5>
+                </div>
+                <div class="row prodview_price_row">
+                    <h3 class="prodview_product_price">
+                        <span class="price_heading">Price:</span>
+                        <span class="price_cont"><span class="rupee_symbol"><sup>₹</sup></span><span
+                                id="prodcut_price_product_{{product.id}}"
+                                class="product_price product_price_prodview">{{product.price|format_price}}</span></span>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% block script_block %}
+
+{% endblock %}
+{% endblock %}

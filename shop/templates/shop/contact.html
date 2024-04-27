@@ -1,0 +1,98 @@
+{% extends 'shop/basic.html' %}
+{% load static %}
+
+{% block title %} ContactPage {% endblock %}
+{% block extra_in_head %}
+<link rel="stylesheet" href="{%static '/shop/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container contact_form_container">
+    <section class="contact_first_section">
+        {% if form_submitted %}
+        <div id="contact_submitted_alert" class="alert alert-success contact_submitted_alert" role="alert">
+            <span class="contact_submitted_alert_text">Your Form has been submited Successfully!</span></a>
+        </div>
+        {% endif %}
+        <form id="contact_form" action="/contact/" method="post" class="px-3 py-4 border rounded-3">
+            {% csrf_token %}
+            <h2 class="mb-4 contact_heading">Contact Us</h2>
+            <div class="mb-3">
+                <label for="Consumer_name" class="form-label">Name<span class="require_star">*</span></label>
+                <input type="text" class="form-control required_input" id="Consumer_name" name="name"
+                    placeholder="Enter your full name">
+                <div id="name_error" class="form-text error_message"></div>
+            </div>
+            <div class="mb-3">
+                <label for="Consumer_Email" class="form-label">Email<span class="require_star">*</span></label>
+                <input type="email" class="form-control required_input" id="Consumer_Email" name="email"
+                    aria-describedby="emailHelp" placeholder="Enter your email address">
+                <div id="email_error" class="form-text error_message"></div>
+            </div>
+            <div class="mb-3">
+                <label for="Consumer_phone" class="form-label">Phone<span class="require_star">*</span></label>
+                <input type="tel" class="form-control required_input" id="Consumer_phone" name="phone"
+                    placeholder="Enter your phone number">
+                <div id="phone_error" class="form-text error_message"></div>
+            </div>
+            <div class="mb-3">
+                <label for="Consumer_textarea" class="form-label">How may we help you?</label>
+                <textarea class="form-control" name="desc" id="Consumer_textarea" rows="3"></textarea>
+            </div>
+            <div class="mt-4 contact_form_button_div">
+                <button type="submit" class="btn btn-success contact_form_submit">Submit</button>
+            </div>
+        </form>
+</div>
+</section>
+
+{% block script_block %}
+<script>
+    var contact_form = document.getElementById('contact_form');
+    var all_input = document.querySelectorAll('.required_input');
+
+    all_input.forEach(cur_input => {
+        cur_input.addEventListener('input', () => {
+            const nextSibling = cur_input.nextElementSibling;
+            if (nextSibling) {
+                const error_id = nextSibling.id;
+                document.getElementById(error_id).innerText = '';
+            }
+        });
+    });
+
+    function email_verification() {
+        let isValid = true;
+        all_input.forEach(cur_input => {
+            const nextSibling = cur_input.nextElementSibling;
+            if (nextSibling) {
+                const error_id = nextSibling.id;
+                if (cur_input.value.trim() === '') {
+                    document.getElementById(error_id).innerText = 'This field is required.';
+                    document.getElementById(error_id).classList.add('error-message');
+                    isValid = false;
+                } else {
+                    document.getElementById(error_id).innerText = '';
+                    document.getElementById(error_id).classList.remove('error-message');
+                }
+            }
+        });
+        return isValid;
+    }
+
+    contact_form.addEventListener('submit', function (event) {
+        if (!email_verification()) {
+            event.preventDefault();
+        }
+    });
+</script>
+<script>
+    try {
+        contact_alert_tag = document.getElementById('contact_submitted_alert')
+        setTimeout(() => {
+            contact_alert_tag.classList.add('d-none')
+        }, 20000);
+    } catch (error) { }
+</script>
+{% endblock %}
+{% endblock %}

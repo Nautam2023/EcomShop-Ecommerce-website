@@ -1,0 +1,59 @@
+{% extends 'shop/basic.html' %}
+{% load static %}
+
+{% block title %} OrdersPage {% endblock %}
+{% block extra_in_head %}
+<link rel="stylesheet" href="{% static '/shop/orders.css'%}">
+{% endblock %}
+{% block content %}
+<section class="mb-5 orders_sections orders_first_section">
+    <!-- {% for order in orders %}
+    <div class="d-flex">
+        <div>{{order.order_id}}</div>
+        <div>{{order.customer_name}}</div>
+        <div>{{order.customer_phone}}</div>
+        <div>{{order.order_cart}}</div>
+    </div>
+    {% endfor %} -->
+    <div class="orders_container">
+        {% for order in orders %}
+        <div class="mb-4 py-3 px-2 order_container">
+            <h4>Order Id: {{order.order_id}}</h4>
+            <div>Name: {{order.customer_name}}</div>
+            <div>Phone: {{order.customer_phone}}</div>
+            <div>Email: {{order.customer_email}}</div>
+            <div class="mb-3">Pin code: {{order.customer_pin_code}}</div>
+            <h6>Order Details: </h6>
+            <ul id="order_first_step_ul_id" class="list-group">
+                {% for product in order.order_cart %}
+                <a href="/products/{{product.product_id}}" class="product_links">
+                    <li
+                        class="list-group-item d-flex gap-2 justify-content-between align-items-center product_review_list">
+                        <div class="order_product_left_side order_product_left_side_normal_row">
+                            <span class="order_product_number">{{ forloop.counter }}. </span>
+                            <span class="order_product_name"> {{product.product_name}} </span>
+                        </div>
+                        <div class="order_product_right_side order_product_right_side_normal_row">
+                            <div class="d-flex order_product_price_div">
+                                <span class="order_product_ruppes"> Rs.</span>
+                                <span class="order_product_price"> {{product.product_price}} </span>
+                            </div>
+                            <span class="order_product_x"> x </span>
+                            <span class="badge text-bg-primary rounded-pill order_product_quantity">
+                                {{product.product_quantity}}
+                            </span>
+                        </div>
+                    </li>
+                </a>
+                {% endfor %}
+            </ul>
+            <div class="mt-3 d-flex justify-content-end">
+                <a href="/tracker"><button type="button" class="btn btn-success track_order_button">Track
+                        Order</button></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</section>
+{% endblock %}

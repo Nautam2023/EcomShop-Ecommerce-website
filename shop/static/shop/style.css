@@ -1,0 +1,240 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.trail_img {
+    height: 200px;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+
+.high_order{
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+.navigation_bar_container{
+    /* background-color: rgb(241, 229, 255) !important; */
+    background-color: rgb(17, 0, 53) !important;
+    padding-block: 15px;
+    box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.cart_button{
+    background-color: rgba(55, 55, 0, 0.675);
+    color: aliceblue;
+}
+
+.cart_button:hover{
+    background-color: rgba(55, 55, 0, 0.5);
+    color: aliceblue;
+}
+
+.content_section{
+    flex: 1;
+    padding-block: 30px;
+    padding-bottom: 50px;
+    background-color: rgb(253, 249, 244);
+}
+
+.content_container{
+    max-width: 1550px;
+}
+
+.category_heading_div{
+    padding-inline: 10px;
+}
+
+.category_heading{
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel_section{
+    background-color: rgb(251, 248, 224);
+}
+
+.carousel_list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
+}
+
+@media screen and (width<450px) {
+    .carousel_list{
+        flex-direction: column;
+    }
+
+    .card_container{
+        min-width: 100%;
+    }
+}
+
+.card_container{
+    padding: 7px;
+}
+
+.carousel_control_div{
+    color: black;
+    font-size: 20px;
+    position: relative;
+    height: 40px;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 0px 9px 3px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-control-prev{
+    justify-content: start;
+    max-width: fit-content;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.carousel-control-next{
+    justify-content: end;
+    max-width: fit-content;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.carousel-control-prev, .carousel-control-next{
+    background-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 0px 9px 3px rgba(255, 255, 255, 0.1);
+    min-width: 40px;
+}
+
+.carousel-indicators{
+    margin-bottom: 0;
+    bottom: -18px;
+}
+
+.product_card{
+    min-height: 100%;
+}
+
+.product_card_link{
+    text-decoration: none;
+    color: inherit;
+}
+
+.heading_product_link:hover{
+    text-decoration: underline;
+}
+
+.product_img_div{
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.product_img{
+    width: 100%;
+    aspect-ratio: 3/2;
+    box-sizing: border-box;
+    overflow: hidden;
+    object-fit: contain;
+}
+
+.product_heading{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.product_desc{
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.show_desc{
+    -webkit-line-clamp: initial;
+}
+
+.rupee_symbol_product{
+    font-size: 18px;
+    margin-right: 2px;
+}
+
+.product_price{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.prodcut_price_product{
+    font-size: 20px;
+}
+
+.add_cart_container_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: stretch;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.checkout_container_div{
+    display: flex;
+}
+
+.checkout_button{
+    flex: 1;
+}
+
+@media screen and (width<230px) {
+    .add_cart_container_div{
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+.add_to_card_link{
+    width: 100%;
+}
+
+.cart_minus_button_span, .cart_plus_button_span{
+    display: inline-block;
+    flex: 1;
+}
+
+.minus_to_cart, .plus_to_cart{
+    font-size: 26px;
+    line-height: 0.9;
+    width: 100%;
+}
+
+.cart_value_span{
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    display: grid;
+    place-content: center;
+}
+
+.shop_footer {
+    margin-top: auto;
+    background-color: rgb(43, 48, 53);
+    color: white;
+    display: flex;
+    justify-content: end;
+    padding-block: 10px;
+    padding-inline: 25px;
+    padding-top: 15px;
+    font-size: 13px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

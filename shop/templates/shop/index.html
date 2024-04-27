@@ -1,0 +1,108 @@
+{% extends 'shop/basic.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %} ShopPage {% endblock %}
+
+{% block content %}
+
+{% for products, range, slides in allprods %}
+<section class="px-1 pb-4 py-3 px-sm-3 py-sm-4 mb-4 carousel_section">
+    <div class="category_heading_div">
+        <h2 class="category_heading">{{products.0.category}}</h2>
+    </div>
+    <div id="carouselExampleIndicators_{{forloop.counter}}" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators_{{forloop.counter}}" data-bs-slide-to="0"
+                class="active" aria-current="true" aria-label="Slide 1"></button>
+            {% for i in range %}
+            <button type="button" data-bs-target="#carouselExampleIndicators_{{forloop.parentloop.counter}}"
+                data-bs-slide-to="{{i}}" aria-label="Slide {{i}}"></button>
+            {% endfor %}
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-xl-5 carousel_list">
+
+                    {% for i in products %}
+
+                    <div class="col card_container">
+                        <div class="card product_card">
+                            <a href="/products/{{i.id}}" class="product_card_link">
+                                <div class="product_img_div">
+                                    <img src="media/{{i.image}}" class="card-img-top product_img" alt="...">
+                                </div>
+                            </a>
+                            <div class="card-body d-flex flex-column">
+                                <a href="/products/{{i.id}}" class="product_card_link heading_product_link">
+                                    <h6 id="product_heading_{{i.id}}" class="card-title product_heading">
+                                        {{i.prodcut_name}}</h6>
+                                </a>
+                                <p class="card-text mb-2 product_desc">{{i.product_desc}}</p>
+                                <a href="/products/{{i.id}}" class="product_card_link">
+                                    <p class="mb-2 product_price_container"><span
+                                            class="rupee_symbol_product"><sup>₹</sup></span><span
+                                            id="prodcut_price_product_{{i.id}}"
+                                            class="product_price prodcut_price_product">{{i.price|format_price}}</span>
+                                    </p>
+                                </a>
+                                <div id="add_cart_button_span_{{i.id}}" class="mb-1 add_cart_container_div">
+                                    <button type="button" id="procuct_cart_button_{{i.id}}"
+                                        class="btn btn-primary add_to_card_link">Add to Cart</button>
+                                </div>
+                                <div class="checkout_container_div">
+                                    <a href="/checkout" type="button"
+                                        class="btn btn-primary checkout_button">Checkout</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    {% if forloop.counter|divisibleby:5 and forloop.counter > 0 and not forloop.last %}
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-xl-5 carousel_list">
+                    {% endif %}
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button"
+            data-bs-target="#carouselExampleIndicators_{{forloop.counter}}" data-bs-slide="prev">
+            <div class="carousel_control_div carousel_control_prev_div">
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+        </button>
+        <button class="carousel-control-next" type="button"
+            data-bs-target="#carouselExampleIndicators_{{forloop.counter}}" data-bs-slide="next">
+            <div class="carousel_control_div carousel_control_next_div">
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+        </button>
+    </div>
+</section>
+{% endfor %}
+{% endblock %}
+
+{% block script_block %}
+<script>
+    products_disc = document.querySelectorAll(".product_heading")
+
+    products_disc.forEach((heading) => {
+        heading.addEventListener('click', (e) => {
+            heading.classList.toggle('show_desc');
+        });
+    });
+
+    products_disc = document.querySelectorAll(".product_desc")
+
+    products_disc.forEach((desc) => {
+        desc.addEventListener('click', (e) => {
+            desc.classList.toggle('show_desc');
+        });
+    });
+</script>
+{% endblock %}

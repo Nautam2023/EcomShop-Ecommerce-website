@@ -1,0 +1,25 @@
+.contact_form_container{
+    max-width: 800px;
+}
+
+.contact_heading{
+    font-size: 24px;
+}
+
+.error-message{
+    color: red;
+}
+
+.require_star{
+    font-size: 16px;
+    color: red;
+}
+
+.contact_form_button_div{
+    display: flex;
+    justify-content: center;
+}
+
+.contact_form_submit{
+    padding-inline: 20px;
+}

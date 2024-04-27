@@ -1,0 +1,59 @@
+.tracker_sections{
+    display: flex;
+    justify-content: center;
+}
+
+.tracker_container{
+    max-width: 800px;
+    flex: 1;
+}
+
+.require_star{
+    font-size: 16px;
+    color: red;
+}
+
+.error_message{
+    color: red;
+}
+
+/*  */
+.tracker_update_number{
+    font-weight: bold;
+}
+
+.tracker_update_title{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.show_hidden{
+    -webkit-line-clamp: initial;
+}
+
+.tracker_update_right_side, .tracker_update_left_side{
+    display: flex;
+    gap: 5px;
+    flex-wrap: nowrap;
+}
+
+.tracker_update_time{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.tracker_update_total_datetime_div{
+    justify-content: end;
+}
+
+.update_status_list{
+    flex-wrap: wrap;
+}

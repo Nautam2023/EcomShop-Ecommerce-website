@@ -1,0 +1,88 @@
+.orders_sections{
+    display: flex;
+    justify-content: center;
+}
+
+.orders_container{
+    max-width: 800px;
+    flex: 1;
+}
+
+/* ?????????????????????????? */
+.product_links{
+    text-decoration: none;
+    color: inherit;
+}
+
+.product_review_list:hover{
+    background-color: rgb(254, 254, 237);
+}
+
+.order_product_number{
+    font-weight: bold;
+}
+
+.order_product_name{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.product_review_list:hover .order_product_name{
+    text-decoration: underline;
+}
+
+.order_product_right_side, .order_product_left_side{
+    display: flex;
+    gap: 5px;
+    flex-wrap: nowrap;
+}
+
+.order_product_price_div{
+    gap: 1px;
+    flex-wrap: nowrap;
+}
+
+.order_product_price{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.order_product_x{
+    font-weight: bold;
+}
+
+.order_product_quantity{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.order_product_total_items_number{
+    font-size: 15px;
+}
+
+.order_product_total_price_nubmer{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.order_product_total_price_div, .order_product_total_items_div{
+    flex-wrap: wrap;
+}
+
+.order_product_total_price_div{
+    justify-content: end;
+}
+
+.order_product_total_price_title, .order_product_total_items_title{
+    text-wrap: wrap;
+}
+
+/* ?????????????????????// */
+.order_container{
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid black;
+}

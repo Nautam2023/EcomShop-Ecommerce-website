@@ -1,0 +1,46 @@
+{% extends 'shop/basic.html' %}
+{% load static %}
+
+{% block title %} AboutPage {% endblock %}
+
+{% block content %}
+<section class="about_first_section">
+    <div class="container">
+        <div class="p-5 mb-4 bg-body-tertiary border rounded-3">
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold">About OwnShop</h1>
+                <p class="col-md-8 fs-4">
+                    Our company is dedicated to providing high-quality products and exceptional service to our
+                    customers. We
+                    believe in making online shopping convenient, enjoyable, and secure for everyone.
+                </p>
+                <!-- <button class="btn btn-primary btn-lg" type="button">Learn More</button> -->
+            </div>
+        </div>
+
+        <div class="row align-items-md-stretch">
+            <div class="col-md-6">
+                <div class="h-100 p-5 text-bg-dark rounded-3">
+                    <h2>Our Mission</h2>
+                    <p>
+                        Our mission is to bring joy and satisfaction to our customers through our curated selection of
+                        products and our commitment to excellent service.
+                    </p>
+                    <!-- <button class="btn btn-outline-light" type="button">Read More</button> -->
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+                    <h2>Our Vision</h2>
+                    <p>
+                        We envision a world where shopping online is not only convenient but also an enriching
+                        experience,
+                        where customers can find exactly what they need with ease and confidence.
+                    </p>
+                    <!-- <button class="btn btn-outline-secondary" type="button">Read More</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
