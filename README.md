@@ -1,0 +1,2 @@
+# EcomShop-Ecommerce-website
+EcomShop is a comprehensive E-commerce platform developed using HTML, CSS, JavaScript, Django, Python, MySQL, and Bootstrap. It provides users with an effortless shopping experience, ensuring simplicity and convenience in every step. The website offers a responsive design, making it accessible on any device. The intuitive cart system allows for easy item management. With Django managing the backend. EcomShop also provides order updates and history features, enabling users to stay informed about their purchases.
