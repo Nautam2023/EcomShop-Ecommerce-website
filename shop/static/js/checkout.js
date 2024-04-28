@@ -45,6 +45,8 @@ if (localStorage.getItem("detailed_cart") != null) {
             "</a>";
     }
 
+    setamount(total_price)
+
     total_price = total_price.toLocaleString("en-IN", {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
@@ -69,6 +71,11 @@ if (localStorage.getItem("detailed_cart") != null) {
         "checkout_first_step_ul_id"
     );
     checkout_first_step_ul.innerHTML = content;
+}
+
+function setamount(Amount){
+    amount_input_tag = document.getElementById("order_amount")
+    amount_input_tag.value = Amount
 }
 
 var contact_form = document.getElementById("checkout_second_step_form");
@@ -132,11 +139,6 @@ contact_form.addEventListener("submit", function (event) {
             alert_tag = document.getElementById("checkout_alert");
             alert_tag.classList.remove("d-none");
             alert_tag.classList.add("d-flex");
-
-            // setTimeout(() => {
-            //     alert_tag.classList.remove('d-flex');
-            //     alert_tag.classList.add('d-none');
-            // }, 2000);
         }
     }
 });

@@ -30,6 +30,7 @@
         <h4 class="mb-3">Step-2 Enter Address & Other Details</h4>
         <form id="checkout_second_step_form" class="row g-3" action="/checkout/" method="post">{% csrf_token %}
             <input type="hidden" name="item_json" id="item_json">
+            <input type="hidden" name="order_amount" id="order_amount">
             <div class="col-md-6">
                 <label for="checkout_inputname" name="" class="form-label">Full Name<span
                         class="require_star">*</span></label>

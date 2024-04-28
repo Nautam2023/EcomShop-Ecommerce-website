@@ -64,8 +64,40 @@ def tracker(request):
     return render(request, "shop/tracker.html")
 
 
+def SerachMatch(query, item):    
+    word_list = query.split(" ")
+    for word in word_list:
+        if (
+        word in (item.prodcut_name).lower()
+        or word in (item.category).lower()
+        or word in (item.sub_category).lower()
+        or word in (item.product_desc).lower()
+        ):
+            return True
+
+    return False
+
+
 def search(request):
-    return render(request, "shop/search.html")
+    query = request.GET.get("search")
+    allprods = []
+    if len(query.rstrip()) > 3:
+        catprods = Product.objects.values("category", "id")
+        cats = {item["category"] for item in catprods}
+
+        for cat in cats:
+            products_temp = Product.objects.filter(category=cat)
+            prod = [item for item in products_temp if SerachMatch(query, item)]
+            n = len(prod)
+            slides = (n // 5) + ceil((n / 5) - (n // 5))
+            if n > 0:
+                allprods.append([prod, range(1, slides), slides])
+
+        params = {"allprods": allprods, "query": query}
+
+    if len(allprods) < 1:
+        params = {"msg": "Sorry, no results found"}
+    return render(request, "shop/search.html", params)
 
 
 def products(request, myid):
@@ -78,6 +110,7 @@ def checkout(request):
     id = 0
     if request.method == "POST":
         items_json = request.POST.get("item_json", "")
+        order_amount = request.POST.get("order_amount", "")
         name = request.POST.get("name", "")
         email = request.POST.get("email", "")
         address = (
@@ -91,6 +124,7 @@ def checkout(request):
         print(order_date_time)
         new_order = Orders(
             items_json=items_json,
+            order_amount=order_amount,
             name=name,
             email=email,
             address=address,
@@ -116,7 +150,10 @@ def orders(request):
 
     all_order_list = []
     for order in all_orders:
-        cart = json.loads(order.items_json)
+        try:
+            cart = json.loads(order.items_json)
+        except:
+            cart = {}
         order_details = {}
 
         day_cart = []
@@ -141,10 +178,10 @@ def orders(request):
         order_details["customer_phone"] = order.phone
         order_details["customer_email"] = order.email
         order_details["customer_pin_code"] = order.zip_code
+        order_details["paid_amount"] = order.order_amount
         order_details["order_cart"] = day_cart
 
         all_order_list.append(order_details)
 
     params = {"orders": all_order_list[::-1]}
     return render(request, "shop/orders.html", params)
-

@@ -22,7 +22,8 @@
             <div>Name: {{order.customer_name}}</div>
             <div>Phone: {{order.customer_phone}}</div>
             <div>Email: {{order.customer_email}}</div>
-            <div class="mb-3">Pin code: {{order.customer_pin_code}}</div>
+            <div>Pin code: {{order.customer_pin_code}}</div>
+            <div class="mb-3">Paid Amount: <sup>₹</sup>{{order.paid_amount}}</div>
             <h6>Order Details: </h6>
             <ul id="order_first_step_ul_id" class="list-group">
                 {% for product in order.order_cart %}
